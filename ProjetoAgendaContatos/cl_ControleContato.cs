@@ -30,5 +30,55 @@ namespace ProjetoAgendaContatos
                 return (e.ToString());
             }
         }
+
+        public string alterar(cl_Contato cont)
+        {
+            // Tenta-se fazer esse bloco de código abaixo
+            try
+            {
+                // É inserido o comando que deve ser dado no SQL e logo após é chamado o método de conexão que está na classe de conexão que aqui foi nomeada de C
+                MySqlCommand cmd = new MySqlCommand("update tb_contato set nome='" + cont.Nome + "'," + "telefone='" + cont.Telefone + "', celular='" + cont.Celular + "', email='" + cont.Email + "' where codcontato = '" + cont.Codcontato + "' ; ", c.con);
+
+                // Aqui é aberto o banco de dados (USE)
+                c.conectar();
+                // O comando é executado no SQL com as devidas inserções do usuário
+                cmd.ExecuteNonQuery();
+                // Aqui é fechado o banco de dados
+                c.desconectar();
+                // Mensagem retornada ao usuário quando bem sucedido
+                return ("Alterado com sucesso");
+            }
+            // Caso não seja possível fazer é exibido uma mensagem com o erro do SQL
+            catch (MySqlException e)
+            {
+                // Retorna o erro em versão string
+                return (e.ToString());
+            }
+        }
+
+        public string deletar(cl_Contato cont)
+        {
+            // Tenta-se fazer esse bloco de código abaixo
+            try
+            {
+                // É inserido o comando que deve ser dado no SQL e logo após é chamado o método de conexão que está na classe de conexão que aqui foi nomeada de C
+                MySqlCommand cmd = new MySqlCommand("delete from tb_contato where codcontato ='" + cont.Codcontato + "' ; ", c.con);
+
+                // Aqui é aberto o banco de dados (USE)
+                c.conectar();
+                // O comando é executado no SQL com as devidas inserções do usuário
+                cmd.ExecuteNonQuery();
+                // Aqui é fechado o banco de dados
+                c.desconectar();
+                // Mensagem retornada ao usuário quando bem sucedido
+                return ("Deletado com sucesso");
+            }
+            // Caso não seja possível fazer é exibido uma mensagem com o erro do SQL
+            catch (MySqlException e)
+            {
+                // Retorna o erro em versão string
+                return (e.ToString());
+            }
+        }
     }
 }

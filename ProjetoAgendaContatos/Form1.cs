@@ -24,6 +24,7 @@ namespace ProjetoAgendaContatos
         // MÉTODO PARA LIMPAR OS CAMPOS
         public void limpar()
         {
+            txtCodigo.Clear();
             txtNome.Clear();
             txtTelefone.Clear();
             txtCelular.Clear();
@@ -39,13 +40,68 @@ namespace ProjetoAgendaContatos
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            cont.Nome = txtNome.Text;
-            cont.Telefone = txtTelefone.Text;
-            cont.Celular = txtCelular.Text;
-            cont.Email = txtEmail.Text;
+            if (txtNome.Text != "" && txtTelefone.Text != "" && txtCelular.Text != "" && txtEmail.Text != "")
+            {
+                cont.Nome = txtNome.Text;
+                cont.Telefone = txtTelefone.Text;
+                cont.Celular = txtCelular.Text;
+                cont.Email = txtEmail.Text;
 
-            limpar();
-            MessageBox.Show(controle.cadastrar(cont));
+                limpar();
+                MessageBox.Show(controle.cadastrar(cont));
+            }
+            else
+            {
+                MessageBox.Show("Olá, parece que temos um problema!!\nInsira as informações em todos os campos para efetuar seu cadastro.\nObrigado desde já!", "ATENÇÃO - ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            if (txtCodigo.Text != "" && txtNome.Text != "" && txtTelefone.Text != "" && txtCelular.Text != "" && txtEmail.Text != "")
+            {
+                cont.Codcontato = int.Parse(txtCodigo.Text);
+                cont.Nome = txtNome.Text;
+                cont.Nome = txtNome.Text;
+                cont.Telefone = txtTelefone.Text;
+                cont.Celular = txtCelular.Text;
+                cont.Email = txtEmail.Text;
+
+                limpar();
+                MessageBox.Show(controle.alterar(cont));
+            }
+            else
+            {
+                MessageBox.Show("Olá, parece que temos um problema!!\n\nInsira as informações em todos os campos para efetuar a alteração no seu registro.\n\n\n PS* Não esqueça de informar o código!!\n\nObrigado desde já!", "ATENÇÃO - ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            // SE O TEXTO NO TEXTBOX DO CÓDIGO ESTIVER DIFERENTE DE VAZIO ENTÃO
+            if (txtCodigo.Text != "")
+            {
+                // CONVERSÃO DE STRING PARA INTEIRO
+                cont.Codcontato = int.Parse(txtCodigo.Text);
+                
+                // CHAMA O MÉTODO QUE LIMA OS CAMPOS DE TEXTO
+                limpar();
+                // PASSA A CONFIRMAÇÃO DE REGISTRO DELETADO
+                MessageBox.Show(controle.deletar(cont));
+            }
+            else
+            {
+                // SENÃO ESSE MESSAGEBOX APARECE FALANDO QUE PRECISA SER DIGITADO O CÓDIGO PARA A EXCLUSÃO
+                MessageBox.Show("Olá, parece que temos um problema!!\n\nINSIRA O CÓDIGO PARA EXCLUIR O REGISTRO.\n\n\n Obrigado desde já!", "ATENÇÃO - ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar) || char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
