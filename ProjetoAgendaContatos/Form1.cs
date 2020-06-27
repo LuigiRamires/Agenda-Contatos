@@ -103,5 +103,92 @@ namespace ProjetoAgendaContatos
                 e.Handled = true;
             }
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Passa para o paramêtro que o valor buscar do controle está no textBox Código
+                cont = controle.buscar(int.Parse(txtCodigo.Text));
+                // Se cont é nulo então mostra-se uma messageBox
+                if(cont is null)
+                {
+                    MessageBox.Show("Registro não encontrado");
+                    limpar();
+                }
+                // Senão serão atribuídos esses valores
+                else
+                {
+                    txtCodigo.Text = cont.Codcontato.ToString();
+                    txtNome.Text = cont.Nome;
+                    txtTelefone.Text = cont.Telefone;
+                    txtCelular.Text = cont.Celular;
+                    txtEmail.Text = cont.Email;
+                }
+            }
+            // Caso não seja posível executar o código acima será exibido o motivo do erro.
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void frmAgenda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // HABILITAR O KEYPREVIEW DO FORMULÁRIO!!!!!!!
+            // Condição "if" para quando apertar a tecla enter o foco vá para o próximo item.
+            if ((e.KeyChar.CompareTo((char)Keys.Return)) == 0)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+
+            }
+        }
+
+        private void btnNoturno_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Black;
+            lblC_MySQL.ForeColor = Color.White;
+            lblCodigo.ForeColor = Color.White;
+            lblNome.ForeColor = Color.White;
+            lblCelular.ForeColor = Color.White;
+            lblTelefone.ForeColor = Color.White;
+            lblEmail.ForeColor = Color.White;
+            btnAlterar.BackColor = Color.Black;
+            btnCadastrar.BackColor = Color.Black;
+            btnExcluir.BackColor = Color.Black;
+            btnBuscar.BackColor = Color.Black;
+            btnNoturno.BackColor = Color.Black;
+            btnAlterar.ForeColor = Color.White;
+            btnCadastrar.ForeColor = Color.White;
+            btnExcluir.ForeColor = Color.White;
+            btnBuscar.ForeColor = Color.White;
+            btnNoturno.ForeColor = Color.White;
+            btnNoturno.Visible = false;
+            btnDiurno.Visible = true;
+        }
+
+        private void btnDiurno_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.LightGray;
+            lblC_MySQL.ForeColor = Color.Black;
+            lblCodigo.ForeColor = Color.Black;
+            lblNome.ForeColor = Color.Black;
+            lblCelular.ForeColor = Color.Black;
+            lblTelefone.ForeColor = Color.Black;
+            lblEmail.ForeColor = Color.Black;
+            btnAlterar.BackColor = Color.LightGray;
+            btnCadastrar.BackColor = Color.LightGray;
+            btnExcluir.BackColor = Color.LightGray;
+            btnBuscar.BackColor = Color.LightGray;
+            btnNoturno.BackColor = Color.LightGray;
+            btnAlterar.ForeColor = Color.Black;
+            btnCadastrar.ForeColor = Color.Black;
+            btnExcluir.ForeColor = Color.Black;
+            btnBuscar.ForeColor = Color.Black;
+            btnNoturno.ForeColor = Color.Black;
+            btnNoturno.Visible = true;
+            btnDiurno.Visible = false;
+        }
     }
 }

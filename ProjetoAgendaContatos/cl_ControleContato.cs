@@ -80,5 +80,54 @@ namespace ProjetoAgendaContatos
                 return (e.ToString());
             }
         }
+
+        public cl_Contato buscar (int codigo)
+        {
+            // Instancia-se a classe contato ao objeto cont
+            cl_Contato cont = new cl_Contato();
+            // Tenta-se fazer esse bloco de código abaixo
+            try
+            {
+                // É inserido o comando que deve ser dado no SQL e logo após é chamado o método de conexão que está na classe de conexão que aqui foi nomeada de C
+                MySqlCommand cmd = new MySqlCommand("select * from tb_contato where codcontato ='" + codigo + "' ; ", c.con);
+
+                // Aqui é aberto o banco de dados (USE)
+                c.conectar();
+                // É criado um objeto que foi chamado de objDados e por ele o comando é executado no SQL com as devidas 
+                // leituras do código informado pelo usuário.
+                MySqlDataReader objDados = cmd.ExecuteReader();
+
+                // Se o comando dado com o código informado não tiver linhas então ele vai retornar um valor nulo
+                if (!objDados.HasRows)
+                {
+                    return null;
+                }
+                // Senão irá ler o que se pede e será feita a exibição dos conteúdos abaixo
+                else
+                {
+                    objDados.Read();
+                    cont.Codcontato = Convert.ToInt32(objDados["codcontato"]);
+                    cont.Nome = objDados["nome"].ToString();
+                    cont.Telefone = objDados["telefone"].ToString();
+                    cont.Celular = objDados["celular"].ToString();
+                    cont.Email = objDados["email"].ToString();
+
+                    // É encerrada a ação do objeto e então retorna os valores
+                    objDados.Close();
+                    return cont;
+                }
+            }
+            // Caso não seja possível fazer é exibido uma mensagem com o erro do SQL
+            catch (MySqlException e)
+            {
+                // Retorna o erro em versão string
+                throw (e);
+            }
+            finally
+            {
+                // É o banco é desusado pelo sistema.
+                c.desconectar();
+            }
+        }
     }
 }
