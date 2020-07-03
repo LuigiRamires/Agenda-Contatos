@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -128,6 +130,110 @@ namespace ProjetoAgendaContatos
                 // É o banco é desusado pelo sistema.
                 c.desconectar();
             }
+        }
+
+        public DataTable PreencherTodos()
+        {
+            string sql = "select codcontato as 'CÓDIGO', nome as 'NOME', telefone as 'TELEFONE', celular as 'CELULAR', email as 'EMAIL' from tb_contato;";
+            // STRING de seleção padrão do SQL 
+
+            MySqlCommand cmd = new MySqlCommand(sql, c.con);
+            // Lê o código e também conecta ao banco
+
+            // (USE) no banco
+            c.conectar();
+
+            // Converte o comando SQL escrito aqui para ser usado no SQL mesmo
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            // Cria-se o objeto para mostrar no DataGridView
+            DataTable contato = new DataTable();
+            // Coloca o conteúdo no contato
+            da.Fill(contato);
+            // Desusa o banco
+            c.desconectar();
+            // Retorna o resultado encontrado
+            return contato;
+        }
+
+        public DataTable pesquisaCodigo(int codigo)
+        {
+            string sql = "select codcontato as 'CÓDIGO', nome as 'NOME', telefone as 'TELEFONE', celular as 'CELULAR', email as 'EMAIL' from tb_contato where codcontato = " + codigo + ";";
+
+            MySqlCommand cmd = new MySqlCommand(sql, c.con);
+
+            c.conectar();
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable contato = new DataTable();
+            da.Fill(contato);
+            c.desconectar();
+            return contato;
+        }
+
+        public DataTable pesquisaNome(string nome)
+        {
+            string sql = "select codcontato as 'CÓDIGO', nome as 'NOME', telefone as 'TELEFONE', celular as 'CELULAR', email as 'EMAIL' from tb_contato where nome like '%" + nome + "%';";
+
+            MySqlCommand cmd = new MySqlCommand(sql, c.con);
+
+            c.conectar();
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable contato = new DataTable();
+            da.Fill(contato);
+            c.desconectar();
+            return contato;
+        }
+
+        public DataTable pesquisaTelefone(string telefone)
+        {
+            string sql = "select codcontato as 'CÓDIGO', nome as 'NOME', telefone as 'TELEFONE', celular as 'CELULAR', email as 'EMAIL' from tb_contato where telefone like '%" + telefone + "%';";
+
+            MySqlCommand cmd = new MySqlCommand(sql, c.con);
+
+            c.conectar();
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable contato = new DataTable();
+            da.Fill(contato);
+            c.desconectar();
+            return contato;
+        }
+
+        public DataTable pesquisaCelular(string celular)
+        {
+            string sql = "select codcontato as 'CÓDIGO', nome as 'NOME', telefone as 'TELEFONE', celular as 'CELULAR', email as 'EMAIL' from tb_contato where celular like '%" + celular + "%';";
+
+            MySqlCommand cmd = new MySqlCommand(sql, c.con);
+
+            c.conectar();
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable contato = new DataTable();
+            da.Fill(contato);
+            c.desconectar();
+            return contato;
+        }
+
+        public DataTable pesquisaEmail(string email)
+        {
+            string sql = "select codcontato as 'CÓDIGO', nome as 'NOME', telefone as 'TELEFONE', celular as 'CELULAR', email as 'EMAIL' from tb_contato where email like '%" + email + "%';";
+
+            MySqlCommand cmd = new MySqlCommand(sql, c.con);
+
+            c.conectar();
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable contato = new DataTable();
+            da.Fill(contato);
+            c.desconectar();
+            return contato;
         }
     }
 }

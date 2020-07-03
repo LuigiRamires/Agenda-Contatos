@@ -106,6 +106,10 @@ namespace ProjetoAgendaContatos
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            frm_Consultas consultas = new frm_Consultas();
+
+            consultas.ShowDialog();
+            /*
             try
             {
                 // Passa para o paramêtro que o valor buscar do controle está no textBox Código
@@ -131,6 +135,7 @@ namespace ProjetoAgendaContatos
             {
                 MessageBox.Show(ex.Message);
             }
+            */
         }
 
         private void frmAgenda_KeyPress(object sender, KeyPressEventArgs e)

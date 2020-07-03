@@ -24,3 +24,4 @@ C:\Users\Luigi\Desktop\GitHub\ProjetoAgendaContatos\ProjetoAgendaContatos\obj\De
 C:\Users\Luigi\Desktop\GitHub\ProjetoAgendaContatos\ProjetoAgendaContatos\obj\Debug\ProjetoAgendaContatos.csproj.CopyComplete
 C:\Users\Luigi\Desktop\GitHub\ProjetoAgendaContatos\ProjetoAgendaContatos\obj\Debug\ProjetoAgendaContatos.exe
 C:\Users\Luigi\Desktop\GitHub\ProjetoAgendaContatos\ProjetoAgendaContatos\obj\Debug\ProjetoAgendaContatos.pdb
+C:\Users\Luigi\Desktop\GitHub\ProjetoAgendaContatos\ProjetoAgendaContatos\obj\Debug\ProjetoAgendaContatos.frm_Consultas.resources
