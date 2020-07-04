@@ -46,6 +46,8 @@
             this.btnDiurno = new System.Windows.Forms.Button();
             this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
             this.txtCelular = new System.Windows.Forms.MaskedTextBox();
+            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.btnRelatorio = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblNome
@@ -219,12 +221,36 @@
             this.txtCelular.Size = new System.Drawing.Size(117, 23);
             this.txtCelular.TabIndex = 3;
             // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.btnPesquisar.Location = new System.Drawing.Point(142, 247);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(83, 25);
+            this.btnPesquisar.TabIndex = 17;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
+            // btnRelatorio
+            // 
+            this.btnRelatorio.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.btnRelatorio.Location = new System.Drawing.Point(231, 247);
+            this.btnRelatorio.Name = "btnRelatorio";
+            this.btnRelatorio.Size = new System.Drawing.Size(83, 25);
+            this.btnRelatorio.TabIndex = 18;
+            this.btnRelatorio.Text = "Relatorio";
+            this.btnRelatorio.UseVisualStyleBackColor = true;
+            this.btnRelatorio.Click += new System.EventHandler(this.btnRelatorio_Click);
+            // 
             // frmAgenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(483, 271);
+            this.ClientSize = new System.Drawing.Size(483, 287);
+            this.Controls.Add(this.btnRelatorio);
+            this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.txtCelular);
             this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.btnDiurno);
@@ -273,6 +299,8 @@
         private System.Windows.Forms.Button btnDiurno;
         private System.Windows.Forms.MaskedTextBox txtTelefone;
         private System.Windows.Forms.MaskedTextBox txtCelular;
+        private System.Windows.Forms.Button btnPesquisar;
+        private System.Windows.Forms.Button btnRelatorio;
     }
 }
 

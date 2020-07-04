@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="agendaDataSet" targetNamespace="http://tempuri.org/agendaDataSet.xsd" xmlns:mstns="http://tempuri.org/agendaDataSet.xsd" xmlns="http://tempuri.org/agendaDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="agendaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="agendaConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ProjetoAgendaContatos.Properties.Settings.GlobalReference.Default.agendaConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tb_contatoTableAdapter" GeneratorDataComponentClassName="tb_contatoTableAdapter" Name="tb_contato" UserDataComponentName="tb_contatoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="agendaConnectionString (Settings)" DbObjectName="agenda.tb_contato" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `codcontato`, `nome`, `telefone`, `celular`, `email` FROM `tb_contato`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="agendaDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="agendaDataSet" msprop:Generator_UserDSName="agendaDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tb_contato" msprop:Generator_TableClassName="tb_contatoDataTable" msprop:Generator_TableVarName="tabletb_contato" msprop:Generator_TablePropName="tb_contato" msprop:Generator_RowDeletingName="tb_contatoRowDeleting" msprop:Generator_RowChangingName="tb_contatoRowChanging" msprop:Generator_RowEvHandlerName="tb_contatoRowChangeEventHandler" msprop:Generator_RowDeletedName="tb_contatoRowDeleted" msprop:Generator_UserTableName="tb_contato" msprop:Generator_RowChangedName="tb_contatoRowChanged" msprop:Generator_RowEvArgName="tb_contatoRowChangeEvent" msprop:Generator_RowClassName="tb_contatoRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

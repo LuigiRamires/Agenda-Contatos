@@ -106,10 +106,6 @@ namespace ProjetoAgendaContatos
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            frm_Consultas consultas = new frm_Consultas();
-
-            consultas.ShowDialog();
-            /*
             try
             {
                 // Passa para o paramêtro que o valor buscar do controle está no textBox Código
@@ -135,7 +131,6 @@ namespace ProjetoAgendaContatos
             {
                 MessageBox.Show(ex.Message);
             }
-            */
         }
 
         private void frmAgenda_KeyPress(object sender, KeyPressEventArgs e)
@@ -194,6 +189,20 @@ namespace ProjetoAgendaContatos
             btnNoturno.ForeColor = Color.Black;
             btnNoturno.Visible = true;
             btnDiurno.Visible = false;
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            frm_Consultas consultas = new frm_Consultas();
+
+            consultas.ShowDialog();
+        }
+
+        private void btnRelatorio_Click(object sender, EventArgs e)
+        {
+            frmRelatório relatório = new frmRelatório();
+
+            relatório.ShowDialog();
         }
     }
 }
